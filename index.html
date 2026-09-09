@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neo — сайты, которые создаёт ИИ | Подкомпания CBS5M</title>
+<meta name="description" content="Neo создаёт статичные сайты с помощью искусственного интеллекта. Сайт с 8 правками — 100 ₽, готово за сутки. Подкомпания CBS5M.">
+<link rel="icon" type="image/png" href="logo.png">
+<meta property="og:title" content="Neo — сайты, которые создаёт ИИ">
+<meta property="og:description" content="Статичные сайты от искусственного интеллекта. Сайт + 8 правок — 100 ₽. Подкомпания CBS5M.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;600;700;800&display=swap&subset=cyrillic" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Neo — создание сайтов с помощью ИИ",
+  "parentOrganization": { "@type": "Organization", "name": "CBS5M" },
+  "description": "Создание статичных сайтов с помощью искусственного интеллекта. Сайт с 8 правками — 100 ₽, дополнительная правка — 10 ₽.",
+  "offers": [
+    { "@type": "Offer", "name": "Сайт + 8 правок", "price": "100", "priceCurrency": "RUB" },
+    { "@type": "Offer", "name": "Дополнительная правка", "price": "10", "priceCurrency": "RUB" }
+  ]
+}
+</script>
+<style>
+  :root{
+    --bg:#08080d;
+    --bg2:#0d0d16;
+    --card:#12121d;
+    --card2:#171724;
+    --line:rgba(255,255,255,.08);
+    --line2:rgba(255,255,255,.14);
+    --text:#f2f2f8;
+    --muted:#9b9bb0;
+    --accent:#7c5cff;
+    --accent2:#22d3ee;
+    --grad:linear-gradient(90deg,#7c5cff 0%,#22d3ee 100%);
+    --radius:18px;
+    --maxw:1160px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Manrope',system-ui,-apple-system,sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{background:rgba(124,92,255,.4)}
+  h1,h2,h3,.font-display{font-family:'Unbounded',sans-serif}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%}
+
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    transition:background .3s,border-color .3s,backdrop-filter .3s;
+    border-bottom:1px solid transparent;
+  }
+  nav.scrolled{
+    background:rgba(8,8,13,.8);
+    backdrop-filter:blur(14px);
+    border-bottom-color:var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw);margin:0 auto;padding:16px 24px;
+    display:flex;align-items:center;gap:32px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;font-family:'Unbounded';font-weight:800;font-size:20px;letter-spacing:.5px}
+  .brand img{width:36px;height:36px;object-fit:contain}
+  .brand .sub{font-family:'Manrope';font-size:11px;font-weight:600;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+  .nav-links{display:flex;gap:28px;margin-left:auto;font-size:14px;font-weight:600;color:var(--muted)}
+  .nav-links a{transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;justify-content:center;
+    padding:13px 26px;border-radius:999px;font-weight:700;font-size:15px;
+    cursor:pointer;border:none;transition:transform .2s,box-shadow .2s,background .2s;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 30px rgba(124,92,255,.35)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(124,92,255,.5)}
+  .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line2)}
+  .btn-ghost:hover{background:rgba(255,255,255,.06)}
+  .btn-sm{padding:9px 20px;font-size:14px}
+  .nav-cta{margin-left:8px}
+  @media(max-width:840px){
+    .nav-links{display:none}
+    .nav-cta{margin-left:auto}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:170px 0 110px;overflow:hidden}
+  .hero-glow{
+    position:absolute;width:900px;height:900px;border-radius:50%;
+    background:radial-gradient(circle,rgba(124,92,255,.22) 0%,rgba(34,211,238,.08) 40%,transparent 70%);
+    top:-350px;right:-200px;pointer-events:none;
+  }
+  .hero-glow2{
+    position:absolute;width:600px;height:600px;border-radius:50%;
+    background:radial-gradient(circle,rgba(34,211,238,.12) 0%,transparent 70%);
+    bottom:-250px;left:-200px;pointer-events:none;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;position:relative}
+  @media(max-width:960px){.hero-grid{grid-template-columns:1fr}}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:7px 16px;border-radius:999px;font-size:13px;font-weight:600;
+    background:rgba(124,92,255,.12);border:1px solid rgba(124,92,255,.35);color:#c9bcff;
+    margin-bottom:26px;
+  }
+  .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent2);box-shadow:0 0 10px var(--accent2);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  h1{font-size:clamp(34px,5vw,58px);font-weight:800;line-height:1.12;letter-spacing:-.5px;margin-bottom:24px}
+  .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.lead{font-size:18px;color:var(--muted);max-width:520px;margin-bottom:36px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px}
+  .hero-stats{display:flex;gap:40px;flex-wrap:wrap}
+  .stat .num{font-family:'Unbounded';font-size:24px;font-weight:800}
+  .stat .lbl{font-size:13px;color:var(--muted);margin-top:2px}
+
+  /* browser mockup */
+  .mock-wrap{position:relative}
+  .mock{
+    background:var(--card);border:1px solid var(--line2);border-radius:20px;
+    overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 80px rgba(124,92,255,.12);
+    transform:perspective(1200px) rotateY(-6deg) rotateX(2deg);
+    animation:float 7s ease-in-out infinite;
+  }
+  @media(max-width:960px){.mock{transform:none}}
+  @keyframes float{0%,100%{translate:0 0}50%{translate:0 -14px}}
+  .mock-bar{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--card2)}
+  .mock-bar .d{width:11px;height:11px;border-radius:50%}
+  .mock-bar .url{
+    margin-left:12px;flex:1;background:rgba(255,255,255,.05);border-radius:8px;
+    font-size:12px;color:var(--muted);padding:6px 14px;font-family:monospace;
+  }
+  .mock-body{padding:28px;display:grid;gap:16px}
+  .sk{border-radius:10px;background:linear-gradient(90deg,rgba(255,255,255,.06) 25%,rgba(255,255,255,.12) 50%,rgba(255,255,255,.06) 75%);background-size:200% 100%;animation:shimmer 1.8s infinite}
+  @keyframes shimmer{to{background-position:-200% 0}}
+  .sk-nav{height:14px;width:40%}
+  .sk-hero{height:64px;width:85%;background:var(--grad);opacity:.85;animation:none}
+  .sk-line{height:10px;width:60%}
+  .sk-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .sk-card{height:56px}
+  .chip{
+    position:absolute;background:var(--card2);border:1px solid var(--line2);
+    border-radius:14px;padding:10px 18px;font-size:13px;font-weight:600;
+    display:flex;align-items:center;gap:8px;box-shadow:0 16px 40px rgba(0,0,0,.5);
+    backdrop-filter:blur(8px);
+  }
+  .chip-1{top:-18px;right:8%;animation:float 6s 1s ease-in-out infinite}
+  .chip-2{bottom:-16px;left:-4%;animation:float 8s .5s ease-in-out infinite}
+  .chip .ic{font-size:16px}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:100px 0}
+  .sec-head{max-width:640px;margin-bottom:60px}
+  .kicker{
+    font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+    margin-bottom:14px;display:block;
+  }
+  h2{font-size:clamp(26px,3.4vw,40px);font-weight:800;line-height:1.2;letter-spacing:-.4px}
+  .sec-head p{color:var(--muted);margin-top:16px;font-size:16px}
+
+  /* features */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:960px){.grid-3{grid-template-columns:1fr 1fr}}
+  @media(max-width:620px){.grid-3{grid-template-columns:1fr}}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px;transition:transform .25s,border-color .25s,box-shadow .25s;
+  }
+  .card:hover{transform:translateY(-5px);border-color:rgba(124,92,255,.45);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+  .card .icon{
+    width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+    font-size:24px;margin-bottom:20px;
+    background:linear-gradient(135deg,rgba(124,92,255,.2),rgba(34,211,238,.15));
+    border:1px solid rgba(124,92,255,.3);
+  }
+  .card h3{font-size:17px;font-weight:600;margin-bottom:10px}
+  .card p{font-size:14px;color:var(--muted)}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step}
+  @media(max-width:960px){.steps{grid-template-columns:1fr 1fr}}
+  @media(max-width:620px){.steps{grid-template-columns:1fr}}
+  .step{
+    position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 26px;counter-increment:step;
+  }
+  .step::before{
+    content:"0" counter(step);
+    font-family:'Unbounded';font-size:15px;font-weight:800;
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+    display:block;margin-bottom:16px;
+  }
+  .step h3{font-size:16px;font-weight:600;margin-bottom:10px}
+  .step p{font-size:13.5px;color:var(--muted)}
+  .steps-note{
+    margin-top:28px;padding:18px 24px;border-radius:14px;font-size:14px;color:var(--muted);
+    background:rgba(124,92,255,.07);border:1px solid rgba(124,92,255,.22);
+    display:flex;gap:12px;align-items:flex-start;
+  }
+  .steps-note b{color:var(--text)}
+
+  /* portfolio */
+  .pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:960px){.pf-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:620px){.pf-grid{grid-template-columns:1fr}}
+  .pf-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;transition:transform .25s,border-color .25s;display:block;
+  }
+  .pf-card:hover{transform:translateY(-5px);border-color:rgba(34,211,238,.4)}
+  .pf-thumb{
+    height:150px;background:
+      radial-gradient(circle at 30% 20%,rgba(124,92,255,.35),transparent 60%),
+      radial-gradient(circle at 80% 80%,rgba(34,211,238,.25),transparent 60%),
+      var(--card2);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Unbounded';font-size:26px;font-weight:800;color:rgba(255,255,255,.85);
+    border-bottom:1px solid var(--line);
+  }
+  .pf-body{padding:20px 24px}
+  .pf-body h3{font-size:16px;font-weight:600}
+  .pf-body span{font-size:13px;color:var(--muted)}
+  .pf-empty{
+    grid-column:1/-1;text-align:center;padding:70px 20px;color:var(--muted);
+    border:1px dashed var(--line2);border-radius:var(--radius);font-size:15px;
+  }
+  .pf-empty .big{font-size:40px;display:block;margin-bottom:14px}
+
+  /* pricing */
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+  @media(max-width:960px){.price-grid{grid-template-columns:1fr}}
+  .price-card{
+    background:var(--card);border:1px solid var(--line);border-radius:20px;
+    padding:36px 32px;display:flex;flex-direction:column;position:relative;
+    transition:transform .25s,border-color .25s;
+  }
+  .price-card:hover{transform:translateY(-5px)}
+  .price-card.featured{
+    border:1px solid rgba(124,92,255,.55);
+    background:linear-gradient(180deg,rgba(124,92,255,.1),rgba(18,18,29,1) 55%);
+    box-shadow:0 24px 70px rgba(124,92,255,.18);
+  }
+  .price-tag{
+    position:absolute;top:-13px;left:32px;background:var(--grad);color:#fff;
+    font-size:12px;font-weight:800;padding:5px 14px;border-radius:999px;letter-spacing:.5px;
+  }
+  .price-card h3{font-size:17px;font-weight:600;margin-bottom:8px}
+  .price{font-family:'Unbounded';font-size:38px;font-weight:800;margin:14px 0 4px}
+  .price small{font-size:15px;color:var(--muted);font-family:'Manrope';font-weight:600}
+  .price-card .desc{font-size:14px;color:var(--muted);margin-bottom:22px}
+  .price-card ul{list-style:none;margin:0 0 28px;display:grid;gap:11px;flex:1}
+  .price-card li{font-size:14px;color:var(--muted);display:flex;gap:10px;align-items:flex-start}
+  .price-card li::before{content:"✓";color:var(--accent2);font-weight:800;flex-shrink:0}
+  .price-note{margin-top:24px;font-size:13px;color:var(--muted);text-align:center}
+
+  /* faq */
+  .faq{max-width:760px;margin:0 auto;display:grid;gap:14px}
+  details{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:22px 26px;transition:border-color .2s;
+  }
+  details[open]{border-color:rgba(124,92,255,.4)}
+  summary{
+    cursor:pointer;font-weight:700;font-size:15.5px;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:22px;color:var(--accent);transition:transform .25s;flex-shrink:0}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{margin-top:14px;font-size:14.5px;color:var(--muted)}
+
+  /* cta banner */
+  .cta-banner{
+    background:
+      radial-gradient(circle at 20% 30%,rgba(124,92,255,.3),transparent 55%),
+      radial-gradient(circle at 85% 70%,rgba(34,211,238,.2),transparent 55%),
+      var(--card);
+    border:1px solid rgba(124,92,255,.35);border-radius:28px;
+    padding:70px 40px;text-align:center;position:relative;overflow:hidden;
+  }
+  .cta-banner h2{margin-bottom:16px}
+  .cta-banner p{color:var(--muted);max-width:520px;margin:0 auto 34px}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:44px 0;margin-top:40px}
+  .foot-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .foot-inner .muted{color:var(--muted);font-size:13.5px}
+  .foot-links{display:flex;gap:24px;font-size:13.5px;color:var(--muted)}
+  .foot-links a:hover{color:var(--text)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.visible{opacity:1;transform:none}
+
+  .github-note{
+    display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);
+    margin-top:18px;
+  }
+  .github-note a{color:#c9bcff;font-weight:600}
+</style>
+</head>
+<body>
+
+<!-- ======= NAV ======= -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <img src="logo.png" alt="Логотип Neo">
+      <div>
+        Neo
+        <div class="sub">by CBS5M</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#features">Возможности</a>
+      <a href="#how">Как это работает</a>
+      <a href="#portfolio">Портфолио</a>
+      <a href="#pricing">Цены</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="btn btn-primary btn-sm nav-cta" href="https://github.com/CBS5M-Neo/Sites/issues/new?template=new-site.yml" target="_blank" rel="noopener">Заказать сайт</a>
+  </div>
+</nav>
+
+<!-- ======= HERO ======= -->
+<header class="hero" id="top">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="container hero-grid">
+    <div>
+      <span class="badge"><span class="dot"></span> Neo — подкомпания CBS5M · работает на ИИ</span>
+      <h1>Сайты, которые <span class="grad-text">создаёт ИИ</span> — быстро и недорого</h1>
+      <p class="lead">Опишите сайт словами — Neo проверит и улучшит ваш запрос, а искусственная интеллект-модель соберёт готовый статичный сайт. Первые 8 правок уже включены в стоимость.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://github.com/CBS5M-Neo/Sites/issues/new?template=new-site.yml" target="_blank" rel="noopener">Заказать сайт → 100 ₽</a>
+        <a class="btn btn-ghost" href="#how">Как это работает</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="num grad-text">100 ₽</div><div class="lbl">сайт + 8 правок</div></div>
+        <div class="stat"><div class="num grad-text">~24 ч</div><div class="lbl">от заявки до готового сайта</div></div>
+        <div class="stat"><div class="num grad-text">0 кода</div><div class="lbl">всё делает ИИ, вы — описываете</div></div>
+      </div>
+    </div>
+    <div class="mock-wrap">
+      <div class="chip chip-1"><span class="ic">⚡</span> ИИ собрал сайт за 47 секунд</div>
+      <div class="chip chip-2"><span class="ic">✅</span> Промпт улучшен автоматикой</div>
+      <div class="mock" aria-hidden="true">
+        <div class="mock-bar">
+          <span class="d" style="background:#ff5f57"></span>
+          <span class="d" style="background:#febc2e"></span>
+          <span class="d" style="background:#28c840"></span>
+          <span class="url">cbs5m-neo.github.io/Sites/мой-сайт/</span>
+        </div>
+        <div class="mock-body">
+          <div class="sk sk-nav"></div>
+          <div class="sk sk-hero"></div>
+          <div class="sk sk-line"></div>
+          <div class="sk-row">
+            <div class="sk sk-card"></div>
+            <div class="sk sk-card"></div>
+            <div class="sk sk-card"></div>
+          </div>
+          <div class="sk sk-line" style="width:35%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ======= FEATURES ======= -->
+<section id="features">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker">Возможности</span>
+      <h2>Что вы получаете</h2>
+      <p>Полноценный статичный сайт: быстрая загрузка, чистая вёрстка и никакой лишней сложности.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card reveal">
+        <div class="icon">🤖</div>
+        <h3>Генерация с помощью ИИ</h3>
+        <p>Сайт собирает современная языковая модель DeepSeek Harness (GLM). Просто опишите, что хотите — текстом, как другу.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">🛠️</div>
+        <h3>8 правок включено</h3>
+        <p>Поменять цвета, тексты, блоки или добавить раздел — в стоимость входят 8 правок. Каждая следующая — 10 ₽.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">🚀</div>
+        <h3>Мгновенный хостинг</h3>
+        <p>Сайт публикуется на GitHub Pages и доступен по адресу cbs5m-neo.github.io/Sites/имя-сайта.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">🧠</div>
+        <h3>Умная проверка запроса</h3>
+        <p>Ваше описание автоматически проверяется и улучшается — вы получаете сайт по понятному и полному промпту.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">📱</div>
+        <h3>Адаптивная вёрстка</h3>
+        <p>Сайты одинаково хорошо выглядят на телефоне, планшете и компьютере — сразу из коробки.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">🔓</div>
+        <h3>Открытый код</h3>
+        <p>Исходники каждого сайта лежат в открытом репозитории Sites — вы всегда можете посмотреть и скачать их.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= HOW IT WORKS ======= -->
+<section id="how" style="background:var(--bg2)">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker">Процесс</span>
+      <h2>Как это работает</h2>
+      <p>От идеи до готового сайта — четыре шага, в которых всё автоматизировано.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <h3>Заявка</h3>
+        <p>Вы оставляете заявку в репозитории Sites: название сайта и описание на обычном русском языке.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Проверка и улучшение промпта</h3>
+        <p>Автоматика анализирует заявку: проверяет полноту, исправляет пробелы и превращает её в качественный технический промпт.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Генерация ИИ</h3>
+        <p>Модель GLM-5.3-flash внутри DeepSeek Harness создаёт сайт — папку с готовой страницей под названием вашего сайта.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Публикация</h3>
+        <p>Готовая папка отправляется в репозиторий Sites, и сайт открывается на cbs5m-neo.github.io/Sites/. Ссылка придёт вам.</p>
+      </div>
+    </div>
+    <div class="steps-note reveal">
+      <span style="font-size:18px">💡</span>
+      <div>Чем подробнее вы опишете сайт — тем точнее результат. Но не переживайте: <b>если данных не хватает, промпт-инженер Neo сам дополнит запрос</b> разумными значениями по умолчанию.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= PORTFOLIO ======= -->
+<section id="portfolio">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker">Портфолио</span>
+      <h2>Сайты, созданные Neo</h2>
+      <p>Все работы берутся напрямую из репозитория Sites — список обновляется сам.</p>
+    </div>
+    <div class="pf-grid" id="pf-grid">
+      <div class="pf-empty" id="pf-empty">
+        <span class="big">🏗️</span>
+        Пока здесь пусто — Neo только стартовала.<br>Ваш сайт может стать первым: <a href="https://github.com/CBS5M-Neo/Sites/issues/new?template=new-site.yml" target="_blank" rel="noopener" style="color:#c9bcff;font-weight:700">закажите его за 100 ₽</a>.
+      </div>
+    </div>
+    <a class="github-note reveal" href="https://github.com/CBS5M-Neo/Sites" target="_blank" rel="noopener">
+      ⭐ Смотреть все сайты в репозитории Sites
+    </a>
+  </div>
+</section>
+
+<!-- ======= PRICING ======= -->
+<section id="pricing" style="background:var(--bg2)">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker">Цены</span>
+      <h2>Честные цены, всё включено</h2>
+      <p>Без подписок и скрытых платежей. Платите за то, что действительно заказываете.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card featured reveal">
+        <span class="price-tag">Популярный</span>
+        <h3>Сайт под ключ</h3>
+        <div class="price">100 ₽</div>
+        <div class="desc">Обычный статичный сайт + 8 правок</div>
+        <ul>
+          <li>Создание сайта с помощью ИИ</li>
+          <li>8 правок включено</li>
+          <li>Адаптивный дизайн</li>
+          <li>Публикация на GitHub Pages</li>
+          <li>Исходники в открытом репозитории</li>
+        </ul>
+        <a class="btn btn-primary" href="https://github.com/CBS5M-Neo/Sites/issues/new?template=new-site.yml" target="_blank" rel="noopener">Заказать</a>
+      </div>
+      <div class="price-card reveal">
+        <h3>Дополнительная правка</h3>
+        <div class="price">10 ₽ <small>/ правка</small></div>
+        <div class="desc">Когда бесплатные 8 правок закончились</div>
+        <ul>
+          <li>Изменение текстов и цветов</li>
+          <li>Добавление или удаление блоков</li>
+          <li>Исправление ошибок</li>
+          <li>Быстрое выполнение</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://github.com/CBS5M-Neo/Sites/issues/new?template=edit-site.yml" target="_blank" rel="noopener">Запросить правку</a>
+      </div>
+      <div class="price-card reveal">
+        <h3>Поддержка посещаемости</h3>
+        <div class="price">20 ₽ <small>/ неделя</small></div>
+        <div class="desc">Только если на сайт не пришёл никто за 7 дней</div>
+        <ul>
+          <li>Выбирается в настройках при заказе</li>
+          <li>Если включено: списывается 20 ₽ за «пустую» неделю</li>
+          <li>Если отключено: списаний нет, но сайт выключается</li>
+          <li>Сайт можно снова включить в любой момент</li>
+        </ul>
+        <a class="btn btn-ghost" href="#faq">Подробнее в FAQ</a>
+      </div>
+    </div>
+    <div class="price-note reveal">Проверка посещаемости проходит раз в неделю. Данные считаются по счётчику на сайте.</div>
+  </div>
+</section>
+
+<!-- ======= FAQ ======= -->
+<section id="faq">
+  <div class="container">
+    <div class="sec-head reveal" style="margin-left:auto;margin-right:auto;text-align:center">
+      <span class="kicker">FAQ</span>
+      <h2>Частые вопросы</h2>
+    </div>
+    <div class="faq reveal">
+      <details>
+        <summary>Что такое Neo?</summary>
+        <p>Neo — подкомпания CBS5M, которая создаёт статичные сайты с помощью искусственного интеллекта. Вы описываете сайт словами, а ИИ собирает его и публикует в интернете.</p>
+      </details>
+      <details>
+        <summary>Что значит «статичный сайт»?</summary>
+        <p>Это сайт из готовых HTML/CSS/JS-страниц: визитки, портфолио, лендинги, страницы услуг, приглашения. Он загружается мгновенно и ничего не стоит в обслуживании. Блогов с админкой и интернет-магазинов с оплатой пока нет.</p>
+      </details>
+      <details>
+        <summary>Как заказать сайт?</summary>
+        <p>Откройте репозиторий <a href="https://github.com/CBS5M-Neo/Sites" target="_blank" rel="noopener" style="color:#c9bcff">Sites</a>, нажмите «New issue» и выберите шаблон «Заказ сайта». Заполните название и описание — остальное сделает автоматика Neo.</p>
+      </details>
+      <details>
+        <summary>Сколько ждать готовый сайт?</summary>
+        <p>Обычно до 24 часов с момента заявки. Генерация самим ИИ занимает минуты, остальное — проверка и публикация.</p>
+      </details>
+      <details>
+        <summary>Как работает списание 20 ₽ за неделю без посетителей?</summary>
+        <p>Эта опция выбирается при заказе. Если она включена, то за каждую неделю, когда на сайт не зашёл ни один посетитель, списывается 20 ₽. Если опция отключена — денег нет, но после 7 дней без посетителей сайт автоматически выключается (его можно снова включить бесплатно).</p>
+      </details>
+      <details>
+        <summary>Как запросить правку?</summary>
+        <p>Создайте issue с шаблоном «Правка сайта» в репозитории Sites и укажите название сайта и что изменить. 8 правок уже входят в стоимость сайта, дальнейшие — по 10 ₽.</p>
+      </details>
+      <details>
+        <summary>Кому принадлежат права на сайт?</summary>
+        <p>Сайт ваш. Исходники публично лежат в репозитории Sites — вы можете в любой момент скачать их и разместить где угодно.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ======= CTA ======= -->
+<section>
+  <div class="container">
+    <div class="cta-banner reveal">
+      <h2>Готовы получить свой сайт за 100 ₽?</h2>
+      <p>Одна заявка — и Neo сделает остальное. Опишите идею в двух предложениях прямо сейчас.</p>
+      <a class="btn btn-primary" href="https://github.com/CBS5M-Neo/Sites/issues/new?template=new-site.yml" target="_blank" rel="noopener">Заказать сайт у Neo</a>
+      <div class="github-note">GitHub организации: <a href="https://github.com/CBS5M-Neo" target="_blank" rel="noopener">github.com/CBS5M-Neo</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer>
+  <div class="container foot-inner">
+    <div>
+      <a class="brand" href="#top" style="font-size:17px">
+        <img src="logo.png" alt="Логотип Neo" style="width:28px;height:28px">
+        Neo <span class="sub" style="margin:0 0 0 8px">by CBS5M</span>
+      </a>
+    </div>
+    <div class="foot-links">
+      <a href="https://github.com/CBS5M-Neo" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/CBS5M-Neo/Sites" target="_blank" rel="noopener">Репозиторий Sites</a>
+      <a href="https://cbs5m-neo.github.io/Sites/" target="_blank" rel="noopener">Каталог сайтов</a>
+    </div>
+    <div class="muted">© 2025 Neo — подкомпания CBS5M. Сайты создаёт ИИ.</div>
+  </div>
+</footer>
+
+<script>
+  // nav background on scroll
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 30), {passive:true});
+
+  // reveal on scroll
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  }), {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // portfolio: live list from Sites repo (sites.json)
+  (async () => {
+    const grid = document.getElementById('pf-grid');
+    const empty = document.getElementById('pf-empty');
+    try {
+      const r = await fetch('https://cbs5m-neo.github.io/Sites/sites.json', {cache:'no-store'});
+      if (!r.ok) throw 0;
+      const sites = await r.json();
+      if (!Array.isArray(sites) || !sites.length) throw 0;
+      empty?.remove();
+      for (const s of sites.slice(0, 9)) {
+        const a = document.createElement('a');
+        a.className = 'pf-card';
+        a.href = s.url || ('https://cbs5m-neo.github.io/Sites/' + encodeURIComponent(s.slug) + '/');
+        a.target = '_blank'; a.rel = 'noopener';
+        a.innerHTML = '<div class="pf-thumb">' + (s.emoji || '🌐') + '</div>' +
+          '<div class="pf-body"><h3></h3><span></span></div>';
+        a.querySelector('h3').textContent = s.title || s.slug;
+        a.querySelector('span').textContent = s.description || 'Сайт, созданный Neo';
+        grid.appendChild(a);
+      }
+    } catch (e) { /* keep empty state */ }
+  })();
+</script>
+</body>
+</html>
