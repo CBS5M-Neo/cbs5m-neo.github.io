@@ -1,9 +1,11 @@
-# Neo — cbs5m-neo.github.io
+# Neo — neo.cbs5m.org
 
 Лендинг **Neo** — подкомпании [CBS5M](https://github.com/CBS5M-Neo), создающей
-статичные сайты с помощью ИИ (GLM-5.3-flash, DeepSeek Harness).
+статичные сайты с помощью ИИ (GLM-5.3-flash / Hy3 / Qwen3.8-Flash / Mimo-v2.5,
+DeepSeek Harness; при исчерпанном лимите модели автоматически переключаются).
 
-**Живой сайт:** <https://cbs5m-neo.github.io/>
+**Живой сайт:** <https://neo.cbs5m.org/>
+**Каталог сайтов:** <https://neo.cbs5m.top/> (репозиторий [Sites](https://github.com/CBS5M-Neo/Sites))
 
 ## Структура
 

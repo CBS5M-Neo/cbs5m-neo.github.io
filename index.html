@@ -362,7 +362,7 @@
           <span class="d" style="background:#ff5f57"></span>
           <span class="d" style="background:#febc2e"></span>
           <span class="d" style="background:#28c840"></span>
-          <span class="url">cbs5m-neo.github.io/Sites/мой-сайт/</span>
+          <span class="url">neo.cbs5m.top/мой-сайт/</span>
         </div>
         <div class="mock-body">
           <div class="sk sk-nav"></div>
@@ -402,7 +402,7 @@
       <div class="card reveal">
         <div class="icon">🚀</div>
         <h3>Мгновенный хостинг</h3>
-        <p>Сайт публикуется на GitHub Pages и доступен по адресу cbs5m-neo.github.io/Sites/имя-сайта.</p>
+        <p>Сайт публикуется на GitHub Pages и доступен по короткому адресу neo.cbs5m.top/имя-сайта.</p>
       </div>
       <div class="card reveal">
         <div class="icon">🧠</div>
@@ -446,7 +446,7 @@
       </div>
       <div class="step reveal">
         <h3>Публикация</h3>
-        <p>Готовая папка отправляется в репозиторий Sites, и сайт открывается на cbs5m-neo.github.io/Sites/. Ссылка придёт вам.</p>
+        <p>Готовая папка отправляется в репозиторий Sites, и сайт открывается на neo.cbs5m.top. Ссылка придёт вам.</p>
       </div>
     </div>
     <div class="steps-note reveal">
@@ -592,7 +592,7 @@
     <div class="foot-links">
       <a href="https://github.com/CBS5M-Neo" target="_blank" rel="noopener">GitHub</a>
       <a href="https://github.com/CBS5M-Neo/Sites" target="_blank" rel="noopener">Репозиторий Sites</a>
-      <a href="https://cbs5m-neo.github.io/Sites/" target="_blank" rel="noopener">Каталог сайтов</a>
+      <a href="https://neo.cbs5m.top/" target="_blank" rel="noopener">Каталог сайтов</a>
     </div>
     <div class="muted">© 2025 Neo — подкомпания CBS5M. Сайты создаёт ИИ.</div>
   </div>
@@ -613,20 +613,32 @@
   (async () => {
     const grid = document.getElementById('pf-grid');
     const empty = document.getElementById('pf-empty');
+    // сначала прямиком с neo.cbs5m.top, при CORS-сбое — зеркало jsDelivr
+    const SOURCES = [
+      'https://neo.cbs5m.top/sites.json',
+      'https://cdn.jsdelivr.net/gh/CBS5M-Neo/Sites@main/sites.json'
+    ];
+    let sites = [];
+    for (const u of SOURCES) {
+      try {
+        const r = await fetch(u, {cache: 'no-store'});
+        if (!r.ok) continue;
+        const j = await r.json();
+        sites = Array.isArray(j) ? j : (j.sites || []);
+        if (sites.length) break;
+      } catch (e) { /* пробуем следующий источник */ }
+    }
+    if (!sites.length) return; // оставляем пустое состояние
     try {
-      const r = await fetch('https://cbs5m-neo.github.io/Sites/sites.json', {cache:'no-store'});
-      if (!r.ok) throw 0;
-      const sites = await r.json();
-      if (!Array.isArray(sites) || !sites.length) throw 0;
       empty?.remove();
-      for (const s of sites.slice(0, 9)) {
+      for (const s of sites.filter(x => x.status !== 'suspended').slice(0, 9)) {
         const a = document.createElement('a');
         a.className = 'pf-card';
-        a.href = s.url || ('https://cbs5m-neo.github.io/Sites/' + encodeURIComponent(s.slug) + '/');
+        a.href = s.url || ('https://neo.cbs5m.top/' + encodeURIComponent(s.slug) + '/');
         a.target = '_blank'; a.rel = 'noopener';
         a.innerHTML = '<div class="pf-thumb">' + (s.emoji || '🌐') + '</div>' +
           '<div class="pf-body"><h3></h3><span></span></div>';
-        a.querySelector('h3').textContent = s.title || s.slug;
+        a.querySelector('h3').textContent = s.name || s.title || s.slug;
         a.querySelector('span').textContent = s.description || 'Сайт, созданный Neo';
         grid.appendChild(a);
       }
